@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Orders | FoodExpress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --brand: #ff7a1a;
+      --brand-dark: #db5d00;
+      --shadow: 0 20px 40px rgba(35, 24, 18, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #fffaf6 0%, #fff7ef 40%, #fff 100%);
+      color: #2b2b2b;
+    }
+    .navbar {
+      background: rgba(23, 19, 18, 0.78);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand { font-size: 1.5rem; font-weight: 800; color: #ffb066 !important; }
+    .card { border-radius: 24px !important; border: none; box-shadow: var(--shadow); }
+    .tracking-timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+    .timeline-step {
+      display: flex;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .timeline-step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 60px;
+      width: 2px;
+      height: 80px;
+      background: #e5e7eb;
+    }
+    .timeline-step.completed::before {
+      background: var(--brand);
+    }
+    .timeline-marker {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #e5e7eb;
+      border: 3px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.5rem;
+      flex-shrink: 0;
+      color: #6b7280;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-step.completed .timeline-marker {
+      background: var(--brand);
+      color: white;
+    }
+    .timeline-step.active .timeline-marker {
+      background: var(--brand);
+      color: white;
+      box-shadow: 0 0 0 4px rgba(255, 122, 26, 0.2);
+    }
+    .timeline-content h5 {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-content p {
+      color: #6b7280;
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+    .order-map {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+    .driver-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+    .driver-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      color: white;
+      font-size: 2.5rem;
+    }
+    .btn-warning { background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%); color: #fff; border: none; font-weight: 700; }
+    .btn-warning:hover { background: linear-gradient(135deg, var(--brand-dark) 0%, #f07c14 100%); }
+    .footer-shell { margin-top: 4rem; background: #181312; color: rgba(255,255,255,0.85); padding: 2rem 0; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-utensils me-2"></i>FoodExpress</a>
+  </div>
+</nav>
+
+<div class="container py-5 flex-grow-1">
+  <div class="mb-5">
+    <p class="text-uppercase text-warning fw-bold mb-2" style="letter-spacing: 0.12em; font-size: 0.72rem;">Real-time tracking</p>
+    <h2 class="fw-bold mb-2" style="letter-spacing: -0.05em;">Track Your Order</h2>
+    <p id="orderLabel" class="text-muted">Loading order...</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <!-- Map -->
+      <div class="card p-4 mb-4">
+        <div class="order-map">
+          <div class="text-center">
+            <i class="fa-solid fa-location-dot fa-3x mb-2 opacity-50"></i>
+            <p class="mb-0">Live tracking map would appear here</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <p class="text-muted mb-1">Estimated Delivery</p>
+            <h5 class="fw-bold mb-0">15-20 minutes</h5>
+          </div>
+          <div class="text-end">
+            <p class="text-muted mb-1">Distance to Location</p>
+            <h5 class="fw-bold mb-0">2.3 km away</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tracking Timeline -->
+      <div class="card p-5">
+        <h5 class="fw-bold mb-4">Order Status</h5>
+        
+        <div id="trackingTimeline" class="tracking-timeline">
+          <div class="timeline-step completed">
+            <div class="timeline-marker"><i class="fa-solid fa-check"></i></div>
+            <div class="timeline-content">
+              <h5>Order Confirmed</h5>
+              <p>Your order has been confirmed</p>
+              <small class="text-muted">2:45 PM</small>
+            </div>
+          </div>
+
+          <div class="timeline-step completed">
+            <div class="timeline-marker"><i class="fa-solid fa-check"></i></div>
+            <div class="timeline-content">
+              <h5>Restaurant Preparing</h5>
+              <p>Your food is being prepared</p>
+              <small class="text-muted">2:50 PM</small>
+            </div>
+          </div>
+
+          <div class="timeline-step completed">
+            <div class="timeline-marker"><i class="fa-solid fa-check"></i></div>
+            <div class="timeline-content">
+              <h5>Ready for Pickup</h5>
+              <p>Food is ready at the restaurant</p>
+              <small class="text-muted">3:05 PM</small>
+            </div>
+          </div>
+
+          <div class="timeline-step active">
+            <div class="timeline-marker"><i class="fa-solid fa-motorcycle"></i></div>
+            <div class="timeline-content">
+              <h5>On The Way</h5>
+              <p>Your delivery rider is on the way</p>
+              <small class="text-muted">3:10 PM</small>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-content">
+              <h5>Delivered</h5>
+              <p>Your order will arrive soon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <!-- Delivery Driver -->
+      <div class="card driver-card mb-4">
+        <div class="driver-avatar"><i class="fa-solid fa-user"></i></div>
+        <h5 class="fw-bold mb-1">Kehinde Oluwaseun</h5>
+        <p class="text-muted mb-3">Delivery Rider</p>
+        <div class="mb-3">
+          <p class="mb-2"><i class="fa-solid fa-star text-warning"></i> 4.9 (287 reviews)</p>
+          <button class="btn btn-warning btn-sm w-100 mb-2">Call Rider</button>
+          <button class="btn btn-outline-dark btn-sm w-100">Chat</button>
+        </div>
+      </div>
+
+      <!-- Order Details -->
+      <div class="card p-4 mb-4">
+        <h5 class="fw-bold mb-3">Order Details</h5>
+        <div class="mb-3">
+          <p class="text-muted mb-1">Items</p>
+          <ul id="orderItems" class="list-unstyled"></ul>
+        </div>
+        <div class="border-top pt-3">
+          <p class="text-muted mb-1">Total</p>
+          <h5 id="orderTotal" class="fw-bold mb-0" style="color: #db5d00;">₦0</h5>
+        </div>
+      </div>
+
+      <!-- Delivery Address -->
+      <div class="card p-4">
+        <h5 class="fw-bold mb-3">Delivery To</h5>
+        <p class="mb-2">
+          <i class="fa-solid fa-location-dot text-warning me-2"></i>
+          <strong>Home</strong>
+        </p>
+        <p id="orderAddress" class="text-muted mb-0 small">Loading address...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-shell mt-auto">
+  <div class="container text-center py-3">
+    <p class="mb-0">&copy; 2026 FoodExpress. Track your order with confidence.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const orderId = new URLSearchParams(window.location.search).get('order');
+  const statusSteps = ['Pending', 'Confirmed', 'Cooking', 'Out For Delivery', 'Delivered'];
+  const statusLabels = ['Order Received', 'Order Confirmed', 'Restaurant Preparing', 'On The Way', 'Delivered'];
+
+  function renderOrder(order) {
+    document.getElementById('orderLabel').textContent = `Order #${order.id} · ${order.status}`;
+    document.getElementById('orderItems').innerHTML = order.items.map(item => `<li class="d-flex justify-content-between mb-2"><span>${item.name} x${item.qty}</span><span class="fw-semibold">₦${(item.price * item.qty).toLocaleString()}</span></li>`).join('');
+    document.getElementById('orderTotal').textContent = `₦${order.total.toLocaleString()}`;
+    document.getElementById('orderAddress').textContent = order.address;
+    const active = statusSteps.indexOf(order.status);
+    document.getElementById('trackingTimeline').innerHTML = statusLabels.map((label, index) => `<div class="timeline-step ${index < active ? 'completed' : ''} ${index === active ? 'active' : ''}"><div class="timeline-marker">${index < active ? '<i class="fa-solid fa-check"></i>' : index + 1}</div><div class="timeline-content"><h5>${label}</h5><p>${index <= active ? (index === active ? 'Current order status' : 'Completed') : 'Waiting for the previous step'}</p></div></div>`).join('');
+  }
+
+  async function loadOrder() {
+    if (!orderId) return document.getElementById('orderLabel').textContent = 'No order selected';
+    const response = await fetch(`/api/orders/${encodeURIComponent(orderId)}`);
+    if (!response.ok) return document.getElementById('orderLabel').textContent = 'Order not found';
+    renderOrder(await response.json());
+  }
+
+  loadOrder().catch(() => { document.getElementById('orderLabel').textContent = 'Unable to load order'; });
+  const events = new EventSource('/api/events');
+  events.addEventListener('order.updated', event => {
+    const order = JSON.parse(event.data);
+    if (order.id === orderId) renderOrder(order);
+  });
+</script>
+</body>
+</html>

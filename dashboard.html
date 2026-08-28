@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | FoodExpress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="shortcut icon" href="" type="image/x-icon"><i class="fa-solid fa-utensils me-2"></i>
+  <style>
+    :root {
+      --brand: #ff7a1a;
+      --brand-dark: #db5d00;
+      --dark: #1c1a19;
+      --muted: #665f5a;
+      --text: #2b2b2b;
+      --shadow: 0 20px 40px rgba(35, 24, 18, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #fffaf6 0%, #fff7ef 40%, #fff 100%);
+      color: var(--text);
+    }
+    .navbar {
+      background: rgba(23, 19, 18, 0.78);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand { font-size: 1.5rem; font-weight: 800; color: #ffb066 !important; }
+    .navbar-nav .nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 600; transition: 0.25s; }
+    .navbar-nav .nav-link:hover { color: #ffd8b1 !important; }
+    .btn-warning { background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%); color: #fff; border: none; font-weight: 700; }
+    .btn-warning:hover { background: linear-gradient(135deg, var(--brand-dark) 0%, #f07c14 100%); }
+    .card { border-radius: 18px !important; border: none; box-shadow: var(--shadow); }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 18px 30px rgba(35, 24, 18, 0.15); transition: 0.25s; }
+    .badge-status { padding: 0.6rem 1rem; border-radius: 999px; font-weight: 600; font-size: 0.85rem; }
+    .badge-completed { background: #dcfce7; color: #166534; }
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .badge-shipped { background: #dbeafe; color: #1e40af; }
+    .footer-shell { margin-top: 4rem; background: #181312; color: rgba(255,255,255,0.85); padding: 2rem 0; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-utensils me-2"></i>FoodExpress</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="ai-assistant.html"><i class="fa-solid fa-robot me-1"></i> AI</a></li>
+        <li class="nav-item"><a class="nav-link" href="community.html"><i class="fa-solid fa-users me-1"></i> Community</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5 flex-grow-1">
+  <div class="row mb-5">
+    <div class="col-lg-8">
+      <div>
+        <p class="text-uppercase text-warning fw-bold mb-2" style="letter-spacing: 0.12em; font-size: 0.72rem;">Welcome back</p>
+        <h2 class="fw-bold" style="letter-spacing: -0.05em;">Hello, Sarah! 👋</h2>
+      </div>
+    </div>
+    <div class="col-lg-4 text-lg-end">
+      <a href="menu.html" class="btn btn-warning">Order New Meal</a>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <div class="col-md-3">
+      <div class="card p-4 text-center">
+        <i class="fa-solid fa-bag-shopping fa-2x text-warning mb-3"></i>
+        <h6 class="text-muted">Total Orders</h6>
+        <h3 class="fw-bold">24</h3>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-4 text-center">
+        <i class="fa-solid fa-credit-card fa-2x text-warning mb-3"></i>
+        <h6 class="text-muted">Total Spent</h6>
+        <h3 class="fw-bold">₦89,500</h3>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-4 text-center">
+        <i class="fa-solid fa-star fa-2x text-warning mb-3"></i>
+        <h6 class="text-muted">Loyalty Points</h6>
+        <h3 class="fw-bold">450</h3>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-4 text-center">
+        <i class="fa-solid fa-fire fa-2x text-warning mb-3"></i>
+        <h6 class="text-muted">Streak (Days)</h6>
+        <h3 class="fw-bold">12</h3>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="fw-bold mb-4">Recent Orders</h4>
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card p-4 mb-3">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+          <div>
+            <h5 class="fw-bold mb-1">Jollof Rice + Chicken Combo</h5>
+            <p class="text-muted mb-0">Order ID: #FX-2024-08-001</p>
+          </div>
+          <span class="badge-status badge-completed">Delivered</span>
+        </div>
+        <div class="row text-sm">
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Date</p>
+            <p class="fw-bold">Aug 14, 2024</p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Amount</p>
+            <p class="fw-bold">₦3,500</p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Delivery Time</p>
+            <p class="fw-bold">28 mins</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4 mb-3">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+          <div>
+            <h5 class="fw-bold mb-1">Seafood Stew + Plantain</h5>
+            <p class="text-muted mb-0">Order ID: #FX-2024-08-002</p>
+          </div>
+          <span class="badge-status badge-shipped">Shipped</span>
+        </div>
+        <div class="row text-sm">
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Date</p>
+            <p class="fw-bold">Aug 15, 2024</p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Amount</p>
+            <p class="fw-bold">₦5,300</p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Status</p>
+            <p class="fw-bold">In Transit</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+          <div>
+            <h5 class="fw-bold mb-1">Salmon Plate with Veggies</h5>
+            <p class="text-muted mb-0">Order ID: #FX-2024-07-003</p>
+          </div>
+          <span class="badge-status badge-pending">Pending Review</span>
+        </div>
+        <div class="row text-sm mb-3">
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Date</p>
+            <p class="fw-bold">Jul 22, 2024</p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Amount</p>
+            <p class="fw-bold">₦4,800</p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-muted mb-1">Rating</p>
+            <p class="fw-bold"><i class="fa-solid fa-star text-warning"></i> Rate Now</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card p-4 sticky-top" style="top: 100px;">
+        <h5 class="fw-bold mb-4">Account Settings</h5>
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-dark"><i class="fa-solid fa-user me-2"></i> Edit Profile</button>
+          <button class="btn btn-outline-dark"><i class="fa-solid fa-location-dot me-2"></i> Delivery Address</button>
+          <button class="btn btn-outline-dark"><i class="fa-solid fa-credit-card me-2"></i> Payment Methods</button>
+          <button class="btn btn-outline-dark"><i class="fa-solid fa-lock me-2"></i> Change Password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-shell mt-auto">
+  <div class="container text-center py-3">
+    <p class="mb-0">&copy; 2026 FoodExpress. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

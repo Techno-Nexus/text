@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Assistant | FoodExpress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --brand: #ff7a1a;
+      --brand-dark: #db5d00;
+      --dark: #1c1a19;
+      --shadow: 0 20px 40px rgba(35, 24, 18, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #fffaf6 0%, #fff7ef 40%, #fff 100%);
+      color: #2b2b2b;
+    }
+    .navbar {
+      background: rgba(23, 19, 18, 0.78);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand { font-size: 1.5rem; font-weight: 800; color: #ffb066 !important; }
+    .navbar-nav .nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 600; }
+    .chat-container {
+      height: 500px;
+      overflow-y: auto;
+      background: linear-gradient(180deg, #fff 0%, #fff8f1 100%);
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,122,26,0.1);
+    }
+    .message {
+      margin-bottom: 1rem;
+      display: flex;
+      animation: slideIn 0.3s ease;
+    }
+    .message.bot {
+      justify-content: flex-start;
+    }
+    .message.user {
+      justify-content: flex-end;
+    }
+    .message-bubble {
+      max-width: 70%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 18px;
+      word-wrap: break-word;
+    }
+    .bot .message-bubble {
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+    .user .message-bubble {
+      background: var(--brand);
+      color: white;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .suggestion-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 122, 26, 0.1);
+      border: 1px solid rgba(255, 122, 26, 0.3);
+      border-radius: 20px;
+      color: var(--brand);
+      margin: 0.3rem;
+      cursor: pointer;
+      transition: 0.25s;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .assistant-mode {
+      border: 1px solid rgba(255,122,26,0.25);
+      background: #fff;
+      color: #6b7280;
+      font-weight: 700;
+    }
+    .assistant-mode.active,
+    .assistant-mode:hover {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+    .suggestion-btn:hover {
+      background: rgba(255, 122, 26, 0.2);
+      border-color: var(--brand);
+    }
+    .card { border-radius: 18px !important; border: none; box-shadow: var(--shadow); }
+    .btn-warning { background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%); color: #fff; border: none; font-weight: 700; }
+    .btn-warning:hover { background: linear-gradient(135deg, var(--brand-dark) 0%, #f07c14 100%); }
+    .footer-shell { margin-top: 4rem; background: #181312; color: rgba(255,255,255,0.85); padding: 2rem 0; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-utensils me-2"></i>FoodExpress</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link active" href="ai-assistant.html"><i class="fa-solid fa-robot me-1"></i> AI</a></li>
+        <li class="nav-item"><a class="nav-link" href="community.html"><i class="fa-solid fa-users me-1"></i> Community</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5 flex-grow-1">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="mb-4">
+        <p class="text-uppercase text-warning fw-bold mb-2" style="letter-spacing: 0.12em; font-size: 0.72rem;">AI Helper</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="fw-bold mb-0" style="letter-spacing: -0.05em;">Food Assistant</h2>
+          <span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill">Online</span>
+        </div>
+      </div>
+
+      <div class="card p-4 mb-4">
+        <p class="text-muted mb-0">
+          <i class="fa-solid fa-robot me-2 text-warning"></i>
+          Ask me for meal suggestions, budget recommendations, nutrition info, or dietary restrictions. I'm here to help!
+        </p>
+      </div>
+
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+        <span class="text-muted small">Assistant mode</span>
+        <div class="btn-group" role="group" aria-label="Assistant mode">
+          <button type="button" class="btn assistant-mode active" data-mode="standard">Standard</button>
+          <button type="button" class="btn assistant-mode" data-mode="advanced">Advanced</button>
+        </div>
+      </div>
+
+      <div class="chat-container" id="chatBox">
+        <div class="message bot">
+          <div class="message-bubble">
+            <strong>AI Bot:</strong> Hi! What can I help you find today?
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 mb-4">
+        <p class="text-muted mb-3">Quick suggestions:</p>
+        <div id="suggestions">
+          <span class="suggestion-btn" onclick="sendSuggestion('Recommend a meal under ₦3,000')">Budget meal</span>
+          <span class="suggestion-btn" onclick="sendSuggestion('Show me healthy options')">Healthy meals</span>
+          <span class="suggestion-btn" onclick="sendSuggestion('What are your bestsellers?')">Best sellers</span>
+          <span class="suggestion-btn" onclick="sendSuggestion('Vegetarian options')">Vegetarian</span>
+        </div>
+      </div>
+
+      <div class="input-group input-group-lg">
+        <input type="text" id="userInput" class="form-control" placeholder="Ask me anything about food...">
+        <button class="btn btn-warning" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-shell mt-auto">
+  <div class="container text-center py-3">
+    <p class="mb-0">&copy; 2026 FoodExpress. Powered by AI & ML Technology.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+let assistantMode = 'standard';
+
+function addMessage(type, text) {
+  const input = document.getElementById('userInput');
+  const chatBox = document.getElementById('chatBox');
+  const message = document.createElement('div');
+  message.className = `message ${type}`;
+  const bubble = document.createElement('div');
+  bubble.className = 'message-bubble';
+  bubble.innerHTML = type === 'bot' ? `<strong>AI Bot:</strong> ${text}` : text;
+  message.appendChild(bubble);
+  chatBox.appendChild(message);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+async function sendMessage() {
+  const input = document.getElementById('userInput');
+  const text = input.value.trim();
+  if (!text) return;
+
+  addMessage('user', text.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[character])));
+  input.value = '';
+
+  const suggestions = document.getElementById('suggestions');
+  if (suggestions) suggestions.style.display = 'none';
+
+  try {
+    const response = await fetch('/api/assistant', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text, mode: assistantMode }) });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'Assistant unavailable');
+    addMessage('bot', result.reply);
+  } catch (error) {
+    addMessage('bot', 'I am temporarily unavailable. Please check that the FoodExpress server is running.');
+  }
+}
+
+function sendSuggestion(text) {
+  document.getElementById('userInput').value = text;
+  sendMessage();
+}
+
+document.getElementById('userInput').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
+
+document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => {
+  assistantMode = button.dataset.mode;
+  document.querySelectorAll('[data-mode]').forEach(modeButton => modeButton.classList.toggle('active', modeButton === button));
+}));
+</script>
+</body>
+</html>

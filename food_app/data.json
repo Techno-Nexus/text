@@ -1,0 +1,114 @@
+{
+  "users": [],
+  "foods": [
+    {
+      "id": "jollof-bowl",
+      "name": "Jollof Bowl",
+      "price": 3500,
+      "category": "Rice & Combo",
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80",
+      "description": "Spicy Nigerian jollof rice with grilled chicken and vegetables."
+    },
+    {
+      "id": "salmon-plate",
+      "name": "Salmon Plate",
+      "price": 4800,
+      "category": "Healthy",
+      "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+      "description": "Lean protein, greens, roasted potatoes, and herb dressing."
+    },
+    {
+      "id": "seafood-stew",
+      "name": "Seafood Stew",
+      "price": 5300,
+      "category": "Soups & Stews",
+      "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
+      "description": "Rich stew with prawns, fish, peppers, and soft plantain."
+    },
+    {
+      "id": "cinnamon-burger",
+      "name": "Cinnamon Burger",
+      "price": 2900,
+      "category": "Combo",
+      "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+      "description": "Juicy grilled patty with cheddar, lettuce, and potato wedges."
+    }
+  ],
+  "carts": {
+    "guest:9fef7070-06f7-4767-bfbe-8b54d390e3ee": [
+      {
+        "foodId": "cinnamon-burger",
+        "name": "Cinnamon Burger",
+        "price": 2900,
+        "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+        "qty": 1
+      }
+    ],
+    "guest:verification-session": [],
+    "guest:756d8fc2-6ef3-46ac-bdf1-a9c165b9e98f": []
+  },
+  "orders": [
+    {
+      "id": "ORD-05784552",
+      "userId": null,
+      "items": [
+        {
+          "foodId": "salmon-plate",
+          "name": "Salmon Plate",
+          "price": 4800,
+          "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+          "qty": 1
+        },
+        {
+          "foodId": "seafood-stew",
+          "name": "Seafood Stew",
+          "price": 5300,
+          "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
+          "qty": 3
+        },
+        {
+          "foodId": "cinnamon-burger",
+          "name": "Cinnamon Burger",
+          "price": 2900,
+          "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+          "qty": 2
+        },
+        {
+          "foodId": "jollof-bowl",
+          "name": "Jollof Bowl",
+          "price": 3500,
+          "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80",
+          "qty": 2
+        }
+      ],
+      "address": "Calabar",
+      "paymentMethod": "Cash on Delivery",
+      "subtotal": 33500,
+      "deliveryFee": 500,
+      "status": "Pending",
+      "createdAt": "2026-08-23T17:23:04.552Z",
+      "total": 34000
+    },
+    {
+      "id": "ORD-05587890",
+      "userId": null,
+      "items": [
+        {
+          "foodId": "jollof-bowl",
+          "name": "Jollof Bowl",
+          "price": 3500,
+          "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80",
+          "qty": 1
+        }
+      ],
+      "address": "Lagos",
+      "paymentMethod": "Cash on Delivery",
+      "subtotal": 3500,
+      "deliveryFee": 500,
+      "status": "Pending",
+      "createdAt": "2026-08-23T17:19:47.891Z",
+      "total": 4000
+    }
+  ],
+  "tickets": []
+}

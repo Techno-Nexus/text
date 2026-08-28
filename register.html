@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | FoodExpress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --brand: #ff7a1a;
+      --brand-dark: #db5d00;
+      --shadow: 0 20px 40px rgba(35, 24, 18, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #fffaf6 0%, #fff7ef 40%, #fff 100%);
+      color: #2b2b2b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .navbar {
+      background: rgba(23, 19, 18, 0.78);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffb066 !important;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 450px;
+    }
+
+    .auth-card {
+      background: white;
+      border-radius: 32px;
+      padding: 3rem 2rem;
+      box-shadow: var(--shadow);
+      border: none;
+    }
+
+    .icon-circle {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%);
+      border-radius: 50%;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .form-control {
+      border-radius: 18px !important;
+      padding: 0.8rem 1.2rem !important;
+      border: 1px solid #e5e7eb !important;
+      font-size: 0.95rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--brand) !important;
+      box-shadow: 0 0 0 3px rgba(255, 122, 26, 0.1);
+    }
+
+    .btn-warning {
+      background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+    }
+
+    .btn-warning:hover {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, #f07c14 100%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><i class="fa-solid fa-utensils me-2"></i>FoodExpress</a>
+    </div>
+  </nav>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="icon-circle">
+        <i class="fa-solid fa-user-plus"></i>
+      </div>
+
+      <h2 class="text-center fw-bold mb-2" style="letter-spacing: -0.05em;">Create Account</h2>
+      <p class="text-center text-muted mb-4">Join FoodExpress and start ordering today</p>
+
+      <form>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Full Name</label>
+          <input type="text" class="form-control form-control-lg" placeholder="John Doe">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Email Address</label>
+          <input type="email" class="form-control form-control-lg" placeholder="you@example.com">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Phone Number</label>
+          <input type="tel" class="form-control form-control-lg" placeholder="+234 800 000 0000">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Password</label>
+          <input type="password" class="form-control form-control-lg" placeholder="Create a secure password">
+        </div>
+
+        <div class="mb-4">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="terms">
+            <label class="form-check-label" for="terms">
+              I agree to the <a href="#" class="text-warning fw-bold">Terms of Service</a> and <a href="#"
+                class="text-warning fw-bold">Privacy Policy</a>
+            </label>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-warning btn-lg w-100 mb-3">Create Account</button>
+      </form>
+
+      <p class="text-center mb-0">
+        Already have an account?
+        <a href="login.html" class="text-warning fw-bold text-decoration-none">Sign in</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

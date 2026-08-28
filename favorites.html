@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites | FoodExpress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --brand: #ff7a1a;
+      --brand-dark: #db5d00;
+      --shadow: 0 20px 40px rgba(35, 24, 18, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #fffaf6 0%, #fff7ef 40%, #fff 100%);
+      color: #2b2b2b;
+    }
+    .navbar {
+      background: rgba(23, 19, 18, 0.78);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand { font-size: 1.5rem; font-weight: 800; color: #ffb066 !important; }
+    .meal-card {
+      border-radius: 24px;
+      overflow: hidden;
+      border: none;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+    .meal-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 30px rgba(35, 24, 18, 0.15);
+    }
+    .meal-image {
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .favorite-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      font-size: 1.3rem;
+    }
+    .favorite-badge.favorited {
+      background: var(--brand);
+      color: white;
+    }
+    .meal-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--brand-dark);
+    }
+    .btn-warning { background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%); color: #fff; border: none; font-weight: 700; }
+    .btn-warning:hover { background: linear-gradient(135deg, var(--brand-dark) 0%, #f07c14 100%); }
+    .filter-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      border: 2px solid #e5e7eb;
+      background: white;
+      cursor: pointer;
+      transition: 0.25s;
+      font-weight: 600;
+    }
+    .filter-btn.active {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .empty-icon {
+      font-size: 4rem;
+      color: var(--brand);
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+    .footer-shell { margin-top: 4rem; background: #181312; color: rgba(255,255,255,0.85); padding: 2rem 0; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-utensils me-2"></i>FoodExpress</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="favorites.html">Favorites</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5 flex-grow-1">
+  <div class="mb-5">
+    <p class="text-uppercase text-warning fw-bold mb-2" style="letter-spacing: 0.12em; font-size: 0.72rem;">Your collection</p>
+    <h2 class="fw-bold mb-4" style="letter-spacing: -0.05em;">Favorite Meals</h2>
+    <p class="text-muted">Your personal collection of meals you love. Quick order your favorites anytime!</p>
+  </div>
+
+  <!-- Filter -->
+  <div class="d-flex flex-wrap gap-2 mb-5">
+    <button class="filter-btn active">All Items</button>
+    <button class="filter-btn">Rice & Combos</button>
+    <button class="filter-btn">Soups & Stews</button>
+    <button class="filter-btn">Protein Bowls</button>
+    <button class="filter-btn">Desserts</button>
+  </div>
+
+  <div class="row g-4">
+    <!-- Meal 1 -->
+    <div class="col-md-6 col-lg-4">
+      <div class="meal-card">
+        <div class="meal-image" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80');">
+          <button class="favorite-badge favorited" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="fw-bold mb-0">Jollof Rice + Chicken</h5>
+            <div class="text-warning"><i class="fa-solid fa-star"></i> 4.9</div>
+          </div>
+          <p class="text-muted mb-3">Aromatic rice with grilled chicken and fresh salad</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="meal-price">₦3,500</div>
+            <button class="btn btn-warning btn-sm">Quick Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meal 2 -->
+    <div class="col-md-6 col-lg-4">
+      <div class="meal-card">
+        <div class="meal-image" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80');">
+          <button class="favorite-badge favorited" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="fw-bold mb-0">Salmon Plate</h5>
+            <div class="text-warning"><i class="fa-solid fa-star"></i> 4.8</div>
+          </div>
+          <p class="text-muted mb-3">Grilled salmon with lemon butter sauce and veggies</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="meal-price">₦4,800</div>
+            <button class="btn btn-warning btn-sm">Quick Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meal 3 -->
+    <div class="col-md-6 col-lg-4">
+      <div class="meal-card">
+        <div class="meal-image" style="background-image: url('https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80');">
+          <button class="favorite-badge favorited" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="fw-bold mb-0">Seafood Stew</h5>
+            <div class="text-warning"><i class="fa-solid fa-star"></i> 4.7</div>
+          </div>
+          <p class="text-muted mb-3">Rich seafood stew with shrimp, fish, and crab</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="meal-price">₦5,300</div>
+            <button class="btn btn-warning btn-sm">Quick Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meal 4 -->
+    <div class="col-md-6 col-lg-4">
+      <div class="meal-card">
+        <div class="meal-image" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80');">
+          <button class="favorite-badge favorited" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="fw-bold mb-0">Burger Combo</h5>
+            <div class="text-warning"><i class="fa-solid fa-star"></i> 4.6</div>
+          </div>
+          <p class="text-muted mb-3">Juicy burger with cheese, fries, and coleslaw</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="meal-price">₦2,900</div>
+            <button class="btn btn-warning btn-sm">Quick Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meal 5 -->
+    <div class="col-md-6 col-lg-4">
+      <div class="meal-card">
+        <div class="meal-image" style="background-image: url('https://images.unsplash.com/photo-1585238341710-4dd0de8b0db0?auto=format&fit=crop&w=900&q=80');">
+          <button class="favorite-badge favorited" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="fw-bold mb-0">Pepperoni Pizza</h5>
+            <div class="text-warning"><i class="fa-solid fa-star"></i> 4.8</div>
+          </div>
+          <p class="text-muted mb-3">Classic pizza with mozzarella and fresh basil</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="meal-price">₦4,200</div>
+            <button class="btn btn-warning btn-sm">Quick Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meal 6 -->
+    <div class="col-md-6 col-lg-4">
+      <div class="meal-card">
+        <div class="meal-image" style="background-image: url('https://images.unsplash.com/photo-1585521537224-7bbf1b3cb6b9?auto=format&fit=crop&w=900&q=80');">
+          <button class="favorite-badge favorited" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="fw-bold mb-0">Chocolate Lava Cake</h5>
+            <div class="text-warning"><i class="fa-solid fa-star"></i> 4.9</div>
+          </div>
+          <p class="text-muted mb-3">Warm cake with molten center and ice cream</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="meal-price">₦1,500</div>
+            <button class="btn btn-warning btn-sm">Quick Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-5 mt-5 bg-light">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h4 class="fw-bold mb-2">Discover More Meals</h4>
+        <p class="text-muted mb-0">Browse our full menu to find new favorite meals and special offers.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+        <a href="menu.html" class="btn btn-warning">Browse Menu</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-shell mt-auto">
+  <div class="container text-center py-3">
+    <p class="mb-0">&copy; 2026 FoodExpress. Your favorites, always ready.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function toggleFavorite(button) {
+  button.classList.toggle('favorited');
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

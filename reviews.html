@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews | FoodExpress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --brand: #ff7a1a;
+      --brand-dark: #db5d00;
+      --shadow: 0 20px 40px rgba(35, 24, 18, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #fffaf6 0%, #fff7ef 40%, #fff 100%);
+      color: #2b2b2b;
+    }
+    .navbar {
+      background: rgba(23, 19, 18, 0.78);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand { font-size: 1.5rem; font-weight: 800; color: #ffb066 !important; }
+    .card { border-radius: 24px !important; border: none; box-shadow: var(--shadow); }
+    .rating-card {
+      text-align: center;
+      padding: 2.5rem 2rem;
+    }
+    .rating-score {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--brand);
+    }
+    .rating-stars {
+      font-size: 1.25rem;
+      margin: 0.5rem 0;
+    }
+    .review-item {
+      padding: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .review-item:last-child {
+      border-bottom: none;
+    }
+    .reviewer-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .review-rating {
+      color: #f59e0b;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      border: 2px solid #e5e7eb;
+      background: white;
+      cursor: pointer;
+      transition: 0.25s;
+      font-weight: 600;
+    }
+    .filter-btn.active {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+    .btn-warning { background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%); color: #fff; border: none; font-weight: 700; }
+    .btn-warning:hover { background: linear-gradient(135deg, var(--brand-dark) 0%, #f07c14 100%); }
+    .footer-shell { margin-top: 4rem; background: #181312; color: rgba(255,255,255,0.85); padding: 2rem 0; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-utensils me-2"></i>FoodExpress</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="reviews.html">Reviews</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5 flex-grow-1">
+  <div class="mb-5">
+    <p class="text-uppercase text-warning fw-bold mb-2" style="letter-spacing: 0.12em; font-size: 0.72rem;">Community feedback</p>
+    <h2 class="fw-bold mb-4" style="letter-spacing: -0.05em;">Customer Reviews</h2>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <!-- Rating Summary -->
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="row g-0">
+          <div class="col-md-4 rating-card bg-light">
+            <div class="rating-score">4.8</div>
+            <div class="rating-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p class="text-muted mb-0 small">Based on 2,847 reviews</p>
+          </div>
+          <div class="col-md-8 p-4">
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="small">5 <i class="fa-solid fa-star text-warning"></i></span>
+                <div class="progress flex-grow-1 mx-2" style="height: 8px;">
+                  <div class="progress-bar" style="width: 75%"></div>
+                </div>
+                <span class="small text-muted">2,130</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="small">4 <i class="fa-solid fa-star text-warning"></i></span>
+                <div class="progress flex-grow-1 mx-2" style="height: 8px;">
+                  <div class="progress-bar" style="width: 15%"></div>
+                </div>
+                <span class="small text-muted">427</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="small">3 <i class="fa-solid fa-star text-warning"></i></span>
+                <div class="progress flex-grow-1 mx-2" style="height: 8px;">
+                  <div class="progress-bar" style="width: 6%"></div>
+                </div>
+                <span class="small text-muted">171</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="small">2 <i class="fa-solid fa-star text-warning"></i></span>
+                <div class="progress flex-grow-1 mx-2" style="height: 8px;">
+                  <div class="progress-bar" style="width: 3%"></div>
+                </div>
+                <span class="small text-muted">85</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="small">1 <i class="fa-solid fa-star text-warning"></i></span>
+                <div class="progress flex-grow-1 mx-2" style="height: 8px;">
+                  <div class="progress-bar" style="width: 1%"></div>
+                </div>
+                <span class="small text-muted">34</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Write Review -->
+    <div class="col-lg-4">
+      <div class="card p-4">
+        <h5 class="fw-bold mb-3">Share Your Experience</h5>
+        <button class="btn btn-warning w-100">Write a Review</button>
+        <p class="text-muted text-center small mt-3 mb-0">Your feedback helps us improve</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div class="d-flex flex-wrap gap-2 mb-4">
+    <button class="filter-btn active">All Reviews</button>
+    <button class="filter-btn">5 Stars</button>
+    <button class="filter-btn">4 Stars</button>
+    <button class="filter-btn">3 Stars</button>
+    <button class="filter-btn">Recent</button>
+  </div>
+
+  <!-- Reviews -->
+  <div class="card">
+    <!-- Review 1 -->
+    <div class="review-item">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <div class="d-flex align-items-center gap-3">
+          <div class="reviewer-avatar">A</div>
+          <div>
+            <h6 class="fw-bold mb-0">Amara Ejiofor</h6>
+            <small class="text-muted">2 days ago</small>
+          </div>
+        </div>
+        <div class="review-rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+      <p class="fw-semibold mb-2">Best food delivery service in Lagos!</p>
+      <p class="text-muted mb-0">The food arrived hot and fresh, delivery was super fast, and the packaging was excellent. The app is user-friendly and tracking works perfectly. Definitely ordering again!</p>
+    </div>
+
+    <!-- Review 2 -->
+    <div class="review-item">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <div class="d-flex align-items-center gap-3">
+          <div class="reviewer-avatar">K</div>
+          <div>
+            <h6 class="fw-bold mb-0">Kunle Adesanya</h6>
+            <small class="text-muted">1 week ago</small>
+          </div>
+        </div>
+        <div class="review-rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+      </div>
+      <p class="fw-semibold mb-2">Great service, minor delay</p>
+      <p class="text-muted mb-0">Food quality is consistently good, driver was polite and professional. Only took slightly longer than expected, but still within the estimated time window. Overall a solid experience.</p>
+    </div>
+
+    <!-- Review 3 -->
+    <div class="review-item">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <div class="d-flex align-items-center gap-3">
+          <div class="reviewer-avatar">T</div>
+          <div>
+            <h6 class="fw-bold mb-0">Tola Ibraheem</h6>
+            <small class="text-muted">2 weeks ago</small>
+          </div>
+        </div>
+        <div class="review-rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+      <p class="fw-semibold mb-2">Excellent quality and fast service</p>
+      <p class="text-muted mb-0">I've used FoodExpress multiple times and haven't had a single bad experience. The restaurants available are top-notch, prices are fair, and the delivery riders are always courteous.</p>
+    </div>
+
+    <!-- Review 4 -->
+    <div class="review-item">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <div class="d-flex align-items-center gap-3">
+          <div class="reviewer-avatar">C</div>
+          <div>
+            <h6 class="fw-bold mb-0">Chioma Nzeribe</h6>
+            <small class="text-muted">3 weeks ago</small>
+          </div>
+        </div>
+        <div class="review-rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+      </div>
+      <p class="fw-semibold mb-2">Good but can be better</p>
+      <p class="text-muted mb-0">Service is generally good, but I experienced a slight issue with one order. The support team was responsive and helpful in resolving it. Looking forward to a better experience next time.</p>
+    </div>
+
+    <!-- Review 5 -->
+    <div class="review-item">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <div class="d-flex align-items-center gap-3">
+          <div class="reviewer-avatar">B</div>
+          <div>
+            <h6 class="fw-bold mb-0">Biodun Olorunfemi</h6>
+            <small class="text-muted">1 month ago</small>
+          </div>
+        </div>
+        <div class="review-rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+      <p class="fw-semibold mb-2">Outstanding service from start to finish</p>
+      <p class="text-muted mb-0">Ordered multiple times this month. Every single order has arrived on time, hot, and exactly as ordered. The variety of restaurants is amazing. Highly recommend!</p>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-outline-dark">Load More Reviews</button>
+  </div>
+</div>
+
+<footer class="footer-shell mt-auto">
+  <div class="container text-center py-3">
+    <p class="mb-0">&copy; 2026 FoodExpress. Trusted by thousands of customers.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

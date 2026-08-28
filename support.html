@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support | FoodExpress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --brand: #ff7a1a;
+      --brand-dark: #db5d00;
+      --shadow: 0 20px 40px rgba(35, 24, 18, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #fffaf6 0%, #fff7ef 40%, #fff 100%);
+      color: #2b2b2b;
+    }
+    .navbar {
+      background: rgba(23, 19, 18, 0.78);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand { font-size: 1.5rem; font-weight: 800; color: #ffb066 !important; }
+    .navbar-nav .nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 600; }
+    .card { border-radius: 24px !important; border: none; box-shadow: var(--shadow); }
+    .feature-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      height: 100%;
+    }
+    .feature-card i {
+      font-size: 2.5rem;
+      color: var(--brand);
+      margin-bottom: 1rem;
+    }
+    .faq-item {
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      background: white;
+    }
+    .faq-question {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+    .faq-answer {
+      margin-top: 1rem;
+      color: #666;
+      display: none;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .btn-warning { background: linear-gradient(135deg, var(--brand) 0%, #ff9e45 100%); color: #fff; border: none; font-weight: 700; }
+    .btn-warning:hover { background: linear-gradient(135deg, var(--brand-dark) 0%, #f07c14 100%); }
+    .form-control {
+      border-radius: 18px !important;
+      padding: 0.8rem 1.2rem !important;
+      border: 1px solid #e5e7eb !important;
+    }
+    .form-control:focus {
+      border-color: var(--brand) !important;
+      box-shadow: 0 0 0 3px rgba(255, 122, 26, 0.1);
+    }
+    .footer-shell { margin-top: 4rem; background: #181312; color: rgba(255,255,255,0.85); padding: 2rem 0; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-utensils me-2"></i>FoodExpress</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="support.html">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5 flex-grow-1">
+  <div class="mb-5">
+    <p class="text-uppercase text-warning fw-bold mb-2" style="letter-spacing: 0.12em; font-size: 0.72rem;">Support</p>
+    <h2 class="fw-bold mb-4" style="letter-spacing: -0.05em;">Customer Support Center</h2>
+  </div>
+
+  <!-- Quick Contact -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-3">
+      <div class="card feature-card">
+        <i class="fa-solid fa-phone"></i>
+        <h5 class="fw-bold mb-2">Call Us</h5>
+        <p class="text-muted mb-2">Available 24/7</p>
+        <p class="fw-bold">+234 800 000 1234</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card feature-card">
+        <i class="fa-solid fa-envelope"></i>
+        <h5 class="fw-bold mb-2">Email</h5>
+        <p class="text-muted mb-2">Response in 2 hours</p>
+        <p class="fw-bold">support@foodexpress.com</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card feature-card">
+        <i class="fa-brands fa-whatsapp"></i>
+        <h5 class="fw-bold mb-2">WhatsApp</h5>
+        <p class="text-muted mb-2">Chat instantly</p>
+        <p class="fw-bold">+234 707 355 4331</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card feature-card">
+        <i class="fa-solid fa-clock"></i>
+        <h5 class="fw-bold mb-2">Live Chat</h5>
+        <p class="text-muted mb-2">Real-time support</p>
+        <button class="btn btn-warning btn-sm">Open Chat</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <div class="col-lg-8">
+      <!-- Contact Form -->
+      <div class="card p-5 mb-5">
+        <h4 class="fw-bold mb-4">Send us a message</h4>
+        <form>
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Full Name</label>
+              <input type="text" class="form-control form-control-lg" placeholder="Your name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Email</label>
+              <input type="email" class="form-control form-control-lg" placeholder="your@email.com">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Subject</label>
+            <select class="form-control form-control-lg">
+              <option>Select a subject</option>
+              <option>Order issue</option>
+              <option>Delivery problem</option>
+              <option>Payment issue</option>
+              <option>General inquiry</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Message</label>
+            <textarea class="form-control form-control-lg" rows="5" placeholder="Describe your issue..."></textarea>
+          </div>
+          <button type="button" class="btn btn-warning btn-lg">Submit Ticket</button>
+        </form>
+      </div>
+
+      <!-- FAQ -->
+      <h4 class="fw-bold mb-4">Frequently Asked Questions</h4>
+      
+      <div class="faq-item active">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How long does delivery take?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Most orders are delivered within 30 minutes during peak hours and 15-20 minutes during off-peak hours. You can track your order in real-time.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What if my order arrives late?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          If your order is late, you'll receive a discount on your next order. We also offer a full refund if it arrives after 45 minutes from confirmation.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I modify my order?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Yes, you can modify your order within 5 minutes of placing it. After that, you'll need to cancel and create a new order.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What payment methods do you accept?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We accept cards (Visa, Mastercard), mobile transfers (Paystack, Flutterwave), and cash on delivery in selected areas.
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Tracker -->
+    <div class="col-lg-4">
+      <div class="card p-4 sticky-top" style="top: 100px;">
+        <h5 class="fw-bold mb-4"><i class="fa-solid fa-headset me-2 text-warning"></i>Support Status</h5>
+        <div class="mb-4">
+          <p class="text-muted mb-1">Average Response Time</p>
+          <p class="fw-bold">2 hours</p>
+        </div>
+        <div class="mb-4">
+          <p class="text-muted mb-1">Support Team</p>
+          <p class="fw-bold">Online Now</p>
+          <span class="badge bg-success">12 agents available</span>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-warning"><i class="fa-solid fa-comments me-2"></i> Start Live Chat</button>
+          <button class="btn btn-outline-dark"><i class="fa-solid fa-phone me-2"></i> Call Support</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-shell mt-auto">
+  <div class="container text-center py-3">
+    <p class="mb-0">&copy; 2026 FoodExpress. We're here to help 24/7!</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function toggleFaq(element) {
+  const faqItem = element.closest('.faq-item');
+  faqItem.classList.toggle('active');
+}
+</script>
+</body>
+</html>
